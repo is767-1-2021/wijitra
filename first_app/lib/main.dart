@@ -5,40 +5,29 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Pop Cat'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.amber,
+          accentColor: Colors.red,
+          textTheme: TextTheme(
+            bodyText2: TextStyle(color: Colors.purple),
+          ),
+        ),
+        initialRoute: '/fourth',
+        routes: <String, WidgetBuilder>{
+          '/first': (context) => FirstPage(),
+          '/second': (context) => SecondPage(),
+          '/third': (context) => ThirdPage(),
+          '/fourth': (context) => FourthPage(),
+        });
   }
 }
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -79,41 +68,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            cat,
+            Container(
+              height: 200.0,
+              margin: EdgeInsets.only(left: 100.0, right: 100.0, bottom: 20.0),
+              padding: EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                color: Colors.amber.withOpacity(0.50),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: cat,
+            ),
             Text(
-              'You have pushed the button this many times:',
+              'You Íhave pushed the button this many times:',
             ),
             Text(
               '$_counter',
@@ -145,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.fingerprint),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
@@ -161,6 +135,168 @@ class SubmitButton extends StatelessWidget {
       onPressed: () {
         print('Pressing');
       },
+    );
+  }
+}
+
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Page First Page'),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.agriculture)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.bus_alert)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.medication)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.food_bank)),
+        ],
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Page'),
+        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.build_sharp),
+        onPressed: () {},
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Break!!! Back at 7.40pm',
+            ),
+            Table(
+              children: [
+                TableRow(children: [
+                  Container(
+                    child: Center(child: Text('No')),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  Container(
+                    child: Center(child: Text('Name')),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  Container(
+                    child: Center(child: Text('Gender')),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                ]),
+                TableRow(
+                    children: [Text('1'), Text('Winai Nadee'), Text('Male')]),
+                TableRow(
+                  children: [
+                    Text('2'),
+                    Text('Nat Lap'),
+                    Text('Female'),
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ThirdPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Third Page'),
+          bottom: TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.cloud)),
+              Tab(
+                icon: Icon(Icons.beach_access_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.brightness_1_outlined),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            Center(
+              child: Text('Cloud'),
+            ),
+            Center(
+              child: Text('Umbrella'),
+            ),
+            Center(
+              child: Text('Sunny'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FourthPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final List<String> entries = <String>[
+      'A',
+      'B',
+      'C',
+      'D',
+      'E',
+      'F',
+      'G',
+      'H',
+      'I',
+      'J',
+      'K',
+      'L',
+      'M',
+      'N'
+    ];
+    final List<int> colorCodes = <int>[600, 500, 100];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Listview Example'),
+      ),
+      body: ListView.separated(
+        padding: EdgeInsets.all(8.0),
+        itemCount: entries.length,
+        itemBuilder: (context, index) {
+          return Container(
+            height: 100,
+            color: Colors.amber[colorCodes[index % 3]],
+            child: Center(
+              child: Text('Entry ${entries[index]}'),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => Divider(),
+      ),
     );
   }
 }
