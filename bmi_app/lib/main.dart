@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_app/screens/main_page.dart';
 
-import 'BMICalculatorScreen.dart';
+void main() => runApp(CheckYourBMR());
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
+class CheckYourBMR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFFF1F1F1),
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
       ),
-      home: BMICalculatorScreen(),
+      home: Home(), //MainPage
     );
   }
 }
