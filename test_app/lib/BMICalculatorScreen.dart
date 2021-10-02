@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'BMIModel.dart';
-import 'ResultFemale.dart';
-import 'ResultMale.dart';
+import 'ResultRcreen.dart';
 
 class BMICalculatorScreen extends StatefulWidget {
   @override
@@ -9,14 +8,10 @@ class BMICalculatorScreen extends StatefulWidget {
 }
 
 class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
-  double _heightOfUser = 160.0;
-  double _weightOfUser = 50.0;
+  double _heightOfUser = 100.0;
+  double _weightOfUser = 40.0;
   double _bmi = 0;
-  double _bmrf = 0;
-  double _bmrm = 0;
-  int _age = 0;
   late BMIModel _bmiModel;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +23,8 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: 80,
-                height: 80,
+                width: 200,
+                height: 200,
                 child: Image.asset(
                   "assets/images/popcat1.png",
                   fit: BoxFit.contain,
@@ -48,7 +43,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               Text(
                 "Pop Pop your BMI",
                 style: TextStyle(
-                    color: Colors.brown[300],
+                    color: Colors.grey[700],
                     fontSize: 25,
                     fontWeight: FontWeight.w500),
               ),
@@ -121,94 +116,34 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               SizedBox(
                 height: 16,
               ),
-              Text(
-                "Age",
-                style: TextStyle(
-                    color: Colors.orange[700],
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 16, right: 16),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      FloatingActionButton(
-                        onPressed: () {
-                          setState(() {
-                            _age++;
-                          });
-                        },
-                        tooltip: 'Increment',
-                        child: Icon(Icons.add),
-                      ),
-                      FloatingActionButton(
-                        onPressed: () {
-                          setState(() {
-                            _age--;
-                          });
-                        },
-                        tooltip: 'Increment',
-                        child: Icon(Icons.remove),
-                      ),
-                    ]),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                "$_age years old",
-                style: TextStyle(
-                    color: Colors.orange[300],
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500),
-              ),
-              SizedBox(
-                height: 16,
-              ),
               Container(
                 child: TextButton.icon(
                     onPressed: () {
                       setState(() {
                         _bmi = _weightOfUser /
                             ((_heightOfUser / 100) * (_heightOfUser / 100));
-                        _bmrf = 9.99 * _weightOfUser +
-                            6.25 * _heightOfUser -
-                            4.92 * _age -
-                            161;
 
                         if (_bmi >= 18.5 && _bmi <= 25) {
                           _bmiModel = BMIModel(
                               bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
                               isNormal: true,
                               isUnder: false,
                               comments: "Your BMI is Normal");
                         } else if (_bmi < 18.5) {
                           _bmiModel = BMIModel(
                               bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
                               isNormal: false,
                               isUnder: true,
                               comments: "You are Underweighted");
                         } else if (_bmi > 25 && _bmi <= 30) {
                           _bmiModel = BMIModel(
                               bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
                               comments: "You are Overweighted");
                         } else {
                           _bmiModel = BMIModel(
                               bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
                               comments: "You are Obesed");
@@ -218,91 +153,20 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ResultFemale(
+                              builder: (context) => ResultScreen(
                                     bmiModel: _bmiModel,
-                                    bmrModel: _bmrf,
                                   )));
                     },
                     icon: Icon(
-                      Icons.female,
-                      color: Colors.pink[100],
+                      Icons.favorite,
+                      color: Colors.amber,
                     ),
                     label: Text("CALCULATE"),
                     style: TextButton.styleFrom(
-                      primary: Colors.purple[100],
-                      backgroundColor: Colors.pink,
-                      onSurface: Colors.brown,
+                      primary: Colors.white,
+                      backgroundColor: Colors.red,
+                      onSurface: Colors.grey,
                     )),
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 16, right: 16),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Container(
-                child: TextButton.icon(
-                    onPressed: () {
-                      setState(() {
-                        _bmi = _weightOfUser /
-                            ((_heightOfUser / 100) * (_heightOfUser / 100));
-
-                        _bmrm = 9.99 * _weightOfUser +
-                            6.25 * _heightOfUser -
-                            4.92 * _age +
-                            5;
-
-                        if (_bmi >= 18.5 && _bmi <= 25) {
-                          _bmiModel = BMIModel(
-                              bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
-                              isNormal: true,
-                              isUnder: false,
-                              comments: "Your BMI is Normal");
-                        } else if (_bmi < 18.5) {
-                          _bmiModel = BMIModel(
-                              bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
-                              isNormal: false,
-                              isUnder: true,
-                              comments: "You are Underweighted");
-                        } else if (_bmi > 25 && _bmi <= 30) {
-                          _bmiModel = BMIModel(
-                              bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
-                              isNormal: false,
-                              isUnder: false,
-                              comments: "You are Overweighted");
-                        } else {
-                          _bmiModel = BMIModel(
-                              bmi: _bmi,
-                              bmrf: _bmrf,
-                              bmrm: _bmrm,
-                              isNormal: false,
-                              isUnder: false,
-                              comments: "You are Obesed");
-                        }
-                      });
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResultMale(
-                                    bmiModel: _bmiModel,
-                                    bmrModel: _bmrm,
-                                  )));
-                    },
-                    icon: Icon(
-                      Icons.male,
-                      color: Colors.blue[100],
-                    ),
-                    label: Text("CALCULATE"),
-                    style: TextButton.styleFrom(
-                        primary: Colors.purple[100],
-                        backgroundColor: Colors.blue,
-                        onSurface: Colors.brown)),
                 width: double.infinity,
                 padding: EdgeInsets.only(left: 16, right: 16),
               ),
@@ -321,8 +185,8 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                     label: Text("Back"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
-                      backgroundColor: Colors.black12,
-                      onSurface: Colors.black12,
+                      backgroundColor: Colors.white,
+                      onSurface: Colors.white,
                     )),
                 width: double.infinity,
                 padding: EdgeInsets.only(left: 16, right: 16),

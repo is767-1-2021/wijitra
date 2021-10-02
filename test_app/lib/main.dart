@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'BMICalculatorScreen.dart';
 import 'fifth_page.dart';
 
@@ -9,9 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData.dark().copyWith(
-          primaryColor: Colors.pinkAccent,
-          scaffoldBackgroundColor: Colors.black12,
+        theme: ThemeData(
+          primarySwatch: Colors.pink,
         ),
         home: FifthPage(),
         initialRoute: '/1',
