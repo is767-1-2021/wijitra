@@ -187,6 +187,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: true,
                               isUnder: false,
+                              isOver: false,
                               comments: "Your BMI is Normal");
                         } else if (_bmi < 18.5) {
                           _bmiModel = BMIModel(
@@ -195,6 +196,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: true,
+                              isOver: false,
                               comments: "You are Underweighted");
                         } else if (_bmi > 25 && _bmi <= 30) {
                           _bmiModel = BMIModel(
@@ -203,6 +205,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
+                              isOver: true,
                               comments: "You are Overweighted");
                         } else {
                           _bmiModel = BMIModel(
@@ -211,6 +214,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
+                              isOver: false,
                               comments: "You are Obesed");
                         }
                       });
@@ -258,6 +262,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: true,
                               isUnder: false,
+                              isOver: false,
                               comments: "Your BMI is Normal");
                         } else if (_bmi < 18.5) {
                           _bmiModel = BMIModel(
@@ -266,6 +271,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: true,
+                              isOver: false,
                               comments: "You are Underweighted");
                         } else if (_bmi > 25 && _bmi <= 30) {
                           _bmiModel = BMIModel(
@@ -274,6 +280,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
+                              isOver: true,
                               comments: "You are Overweighted");
                         } else {
                           _bmiModel = BMIModel(
@@ -282,6 +289,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                               bmrm: _bmrm,
                               isNormal: false,
                               isUnder: false,
+                              isOver: false,
                               comments: "You are Obesed");
                         }
                       });

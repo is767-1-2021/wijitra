@@ -56,21 +56,35 @@ class ResultFemale extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            bmiModel.isNormal
+            (bmiModel.isUnder)
                 ? Text(
-                    "WOOHOO!",
+                    "Underweighted!",
                     style: TextStyle(
                         color: Colors.green[700],
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   )
-                : Text(
-                    "Sadly! Your BMI is Not Normal",
-                    style: TextStyle(
-                        color: Colors.orange[700],
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700),
-                  ),
+                : (bmiModel.isNormal)
+                    ? Text(
+                        "WOOHOO!Your BMI is Normal!",
+                        style: TextStyle(
+                            color: Colors.green[700],
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700),
+                      )
+                    : (bmiModel.isOver)
+                        ? Text("Sadly! Your BMI is Overweighted",
+                            style: TextStyle(
+                                color: Colors.orange[700],
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700))
+                        : Text(
+                            "Sadly! Your BMI is Obesed",
+                            style: TextStyle(
+                                color: Colors.orange[700],
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700),
+                          ),
             SizedBox(
               height: 16,
             ),
