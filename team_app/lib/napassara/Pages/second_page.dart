@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:team_app/napassara/models/first_form_model.dart';
 import 'package:provider/provider.dart';
+import 'package:team_app/phattarawadee/models/first_form_model.dart';
 
-class SecondPage extends StatelessWidget {
+class dailymeal extends StatelessWidget {
+  //const SecondPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Enter Date&Time and Menu'),
-      ),
-      body: MyCustomForm(),
-    );
+    const appTitle = 'Daily Meal Record';
+    return MaterialApp(
+        title: appTitle,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Color.fromARGB(192, 192, 192, 192),
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text(appTitle),
+            backgroundColor: Colors.grey[850],
+            textTheme:
+                TextTheme(bodyText1: TextStyle(color: Colors.cyanAccent)),
+          ),
+          body: MyCustomForm(),
+        ));
   }
 }
 
@@ -24,7 +35,6 @@ class _MyCustomFormState extends State<MyCustomForm> {
   String? _date;
   String? _time;
   String? _menu;
-
   int? _kCal;
 
   @override

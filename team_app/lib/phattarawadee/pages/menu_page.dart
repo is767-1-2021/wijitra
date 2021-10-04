@@ -27,14 +27,14 @@ class MenuPage extends StatelessWidget {
     ];
     final List<int> colorCodes = <int>[400, 200, 100];
     final List<Image> menu = <Image>[
-      Image.asset('assets/image_1_big.png'),
-      Image.asset('assets/image_2.png'),
-      Image.asset('assets/plate1.png'),
-      Image.asset('assets/plate4.png'),
-      Image.asset('assets/plate5.png'),
-      Image.asset('assets/plate6.png'),
-      Image.asset('assets/image_1_big.png'),
-      Image.asset('assets/image_2.png')
+      Image.asset('assets/images/image_1_big.png'),
+      Image.asset('assets/images/image_2.png'),
+      Image.asset('assets/images/plate1.png'),
+      Image.asset('assets/images/plate4.png'),
+      Image.asset('assets/images/plate5.png'),
+      Image.asset('assets/images/plate6.png'),
+      Image.asset('assets/images/image_1_big.png'),
+      Image.asset('assets/images/image_2.png')
     ];
     return Scaffold(
       appBar: AppBar(

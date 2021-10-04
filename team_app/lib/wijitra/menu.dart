@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:team_app/first_page.dart';
+import 'package:team_app/jirutcha/Pages/FirstPage.dart';
+import 'package:team_app/napassara/Pages/first_page.dart';
+import 'package:team_app/phattarawadee/pages/menu_page.dart';
 import 'BMICalculatorScreen.dart';
 import 'Home.dart';
 
@@ -44,7 +47,7 @@ class Menu extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BMICalculatorScreen()));
+                              builder: (context) => FirstPagew()));
                     },
                     icon: Icon(
                       Icons.forward,
@@ -62,16 +65,14 @@ class Menu extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BMICalculatorScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FirstPage()));
                     },
                     icon: Icon(
                       Icons.local_pizza,
                       color: Colors.pink,
                     ),
-                    label: Text("Blank"),
+                    label: Text("FirstPagej"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.green[900],
@@ -86,13 +87,13 @@ class Menu extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BMICalculatorScreen()));
+                              builder: (context) => First_Page()));
                     },
                     icon: Icon(
                       Icons.wine_bar,
                       color: Colors.pink,
                     ),
-                    label: Text("Blank"),
+                    label: Text("FirstPageN"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.green[900],
@@ -104,16 +105,14 @@ class Menu extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BMICalculatorScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MenuPage()));
                     },
                     icon: Icon(
                       Icons.food_bank,
                       color: Colors.pink,
                     ),
-                    label: Text("blank"),
+                    label: Text("MenuPage"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.green[900],
@@ -132,7 +131,7 @@ class Menu extends StatelessWidget {
                       Icons.umbrella,
                       color: Colors.pink,
                     ),
-                    label: Text("blank"),
+                    label: Text("home"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.green[900],

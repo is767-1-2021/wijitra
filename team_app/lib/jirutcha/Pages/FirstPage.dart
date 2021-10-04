@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:team_app/phattarawadee/models/first_form_model.dart';
+import 'package:provider/provider.dart';
+import 'package:team_app/sixth_page.dart';
 
-void main() => runApp(const FirstPage());
+//void main() => runApp(const FirstPage());
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -10,21 +13,19 @@ class FirstPage extends StatelessWidget {
     const appTitle = 'Daily Exercise Record';
 
     return MaterialApp(
-      title: appTitle,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(192, 192, 192, 192),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(appTitle),
-          backgroundColor: Colors.grey[850],
-          textTheme: TextTheme(
-            bodyText1: TextStyle(color: Colors.cyanAccent)
-          ),
+        title: appTitle,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Color.fromARGB(192, 192, 192, 192),
         ),
-        body: const MyCustomForm(),
-      )
-    );
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text(appTitle),
+            backgroundColor: Colors.grey[850],
+            textTheme:
+                TextTheme(bodyText1: TextStyle(color: Colors.cyanAccent)),
+          ),
+          body: const MyCustomForm(),
+        ));
   }
 }
 
@@ -39,8 +40,12 @@ class MyCustomForm extends StatefulWidget {
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
+  String? _date;
+  String? _time;
+  String? _sport;
+  int? _kCal;
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -56,9 +61,12 @@ class MyCustomFormState extends State<MyCustomForm> {
               if (value == null || value.isEmpty) {
                 return 'Please enter date.';
               }
-
               return null;
             },
+            onSaved: (value) {
+              _date = value;
+            },
+            initialValue: context.read<FirstFormModel>().date,
           ),
           TextFormField(
             decoration: InputDecoration(
@@ -73,10 +81,13 @@ class MyCustomFormState extends State<MyCustomForm> {
 
               return null;
             },
+            onSaved: (value) {
+              _sport = value;
+            },
+            initialValue: context.read<FirstFormModel>().menu,
           ),
           TextFormField(
             decoration: InputDecoration(
-
               border: UnderlineInputBorder(),
               labelText: 'Duration (HH:MM)',
               icon: Icon(Icons.watch_outlined),
@@ -88,6 +99,10 @@ class MyCustomFormState extends State<MyCustomForm> {
 
               return null;
             },
+            onSaved: (value) {
+              _time = int.parse(value!) as String?;
+            },
+            initialValue: context.read<FirstFormModel>().kCal.toString(),
           ),
           TextFormField(
             decoration: InputDecoration(
@@ -102,21 +117,30 @@ class MyCustomFormState extends State<MyCustomForm> {
 
               return null;
             },
-          ), 
-          
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              onPrimary: Colors.black,
-              primary: Colors.tealAccent,
-            ),
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                _formKey.currentState!.save();
-                Navigator.pop(context);
-              }
+            onSaved: (value) {
+              _kCal = int.parse(value!);
             },
-            child: Text('Done')  
+            initialValue: context.read<FirstFormModel>().kCal.toString(),
           ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.black,
+                primary: Colors.tealAccent,
+              ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                  context.read<FirstFormModel>().date = _date;
+                  context.read<FirstFormModel>().time = _time;
+                  context.read<FirstFormModel>().menu = _sport;
+                  context.read<FirstFormModel>().kCal = _kCal;
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SixthPage();
+                  }));
+                }
+              },
+              child: Text('Done')),
         ],
       ),
     );
