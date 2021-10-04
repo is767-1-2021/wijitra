@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_app/jirutcha/Pages/SecondPage.dart';
-import 'package:team_app/napassara/Pages/first_page.dart';
-import 'package:team_app/napassara/Pages/second_page.dart';
-import 'package:team_app/phattarawadee/models/first_form_model.dart';
-import 'package:team_app/sixth_page.dart';
-import 'wijitra/BMICalculatorScreen.dart';
-import 'wijitra/Home.dart';
-import 'wijitra/menu.dart';
+
+import 'models/first_form_model.dart';
+import 'models/food_form_model.dart';
+import 'pages/BMICalculatorScreen.dart';
+import 'pages/Home_menu.dart';
+import 'pages/workout.dart';
+import 'pages/sitemap.dart';
+import 'pages/menu_page.dart';
+import 'pages/daily_meal.dart';
+import 'pages/score_result.dart';
+import 'pages/welcome.dart';
 
 void main() {
   runApp(
@@ -15,6 +18,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (context) => FirstFormModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FoodFormModel(),
         ),
       ],
       child: MyApp(),
@@ -32,15 +38,16 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black12,
         ),
         home: BMICalculatorScreen(),
-        initialRoute: '/three',
+        initialRoute: '/one',
         routes: <String, WidgetBuilder>{
-          '/one': (context) => Home(),
+          '/one': (context) => Welcome(),
           '/two': (context) => BMICalculatorScreen(),
-          '/three': (context) => Menu(),
-          '/four': (context) => SecondPage(),
-          '/five': (context) => First_Page(),
-          '/six': (context) => dailymeal(),
-          '/seven': (context) => SixthPage(),
+          '/three': (context) => sitemap(),
+          '/four': (context) => workout(),
+          '/five': (context) => meal(),
+          '/six': (context) => MenuPage(),
+          '/seven': (context) => score_result(),
+          '/eight': (context) => Home(),
         });
   }
 }
