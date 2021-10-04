@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'BMICalculatorScreen.dart';
+import 'Home.dart';
 
-class Home extends StatelessWidget {
+class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,10 +125,8 @@ class Home extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BMICalculatorScreen()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                     },
                     icon: Icon(
                       Icons.umbrella,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'wijitra/BMICalculatorScreen.dart';
+import 'wijitra/Home.dart';
 import 'wijitra/menu.dart';
 
 void main() => runApp(MyApp());
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black12,
         ),
         home: BMICalculatorScreen(),
-        initialRoute: '/1',
+        initialRoute: '/3',
         routes: <String, WidgetBuilder>{
           '/1': (context) => Home(),
           '/2': (context) => BMICalculatorScreen(),
+          '/3': (context) => Menu(),
         });
   }
 }
