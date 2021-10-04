@@ -49,7 +49,7 @@ class ResultMale extends StatelessWidget {
             Text(
               "พลังงานที่ต้องการใน1วันคือ ${bmiModel.bmrm.round()} kcal",
               style: TextStyle(
-                  color: Colors.blue[700],
+                  color: Colors.green[700],
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
@@ -60,7 +60,7 @@ class ResultMale extends StatelessWidget {
                 ? Text(
                     "Underweighted!",
                     style: TextStyle(
-                        color: Colors.green[700],
+                        color: Colors.red[700],
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   )
@@ -68,7 +68,7 @@ class ResultMale extends StatelessWidget {
                     ? Text(
                         "WOOHOO!Your BMI is Normal!",
                         style: TextStyle(
-                            color: Colors.green[700],
+                            color: Colors.purple[700],
                             fontSize: 20,
                             fontWeight: FontWeight.w700),
                       )

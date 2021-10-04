@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'BMICalculatorScreen.dart';
-import 'fifth_page.dart';
+import 'wijitra/BMICalculatorScreen.dart';
+import 'wijitra/menu.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.pinkAccent,
           scaffoldBackgroundColor: Colors.black12,
         ),
-        home: FifthPage(),
+        home: BMICalculatorScreen(),
         initialRoute: '/1',
         routes: <String, WidgetBuilder>{
-          '/5': (context) => FifthPage(),
-          '/1': (context) => BMICalculatorScreen(),
+          '/1': (context) => Home(),
+          '/2': (context) => BMICalculatorScreen(),
         });
   }
 }

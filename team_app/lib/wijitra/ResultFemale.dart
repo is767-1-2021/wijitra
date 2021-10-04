@@ -60,7 +60,7 @@ class ResultFemale extends StatelessWidget {
                 ? Text(
                     "Underweighted!",
                     style: TextStyle(
-                        color: Colors.green[700],
+                        color: Colors.red[700],
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
                   )

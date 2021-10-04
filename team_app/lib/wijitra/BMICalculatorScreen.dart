@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'BMIModel.dart';
 import 'ResultFemale.dart';
-import 'ResultMale.dart';
+import 'Resultmale.dart';
 
 class BMICalculatorScreen extends StatefulWidget {
   @override
@@ -304,12 +304,12 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                     },
                     icon: Icon(
                       Icons.male,
-                      color: Colors.blue[100],
+                      color: Colors.green[100],
                     ),
                     label: Text("CALCULATE"),
                     style: TextButton.styleFrom(
                         primary: Colors.purple[100],
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                         onSurface: Colors.brown)),
                 width: double.infinity,
                 padding: EdgeInsets.only(left: 16, right: 16),
