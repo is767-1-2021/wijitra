@@ -11,6 +11,7 @@ import 'pages/menu_page.dart';
 import 'pages/daily_meal.dart';
 import 'pages/score_result.dart';
 import 'pages/welcome.dart';
+import 'pages/workout_result.dart';
 
 void main() {
   runApp(
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black12,
         ),
         home: BMICalculatorScreen(),
-        initialRoute: '/one',
+        initialRoute: '/nine',
         routes: <String, WidgetBuilder>{
           '/one': (context) => Welcome(),
           '/two': (context) => BMICalculatorScreen(),
@@ -46,8 +47,9 @@ class MyApp extends StatelessWidget {
           '/four': (context) => workout(),
           '/five': (context) => meal(),
           '/six': (context) => MenuPage(),
-          '/seven': (context) => score_result(),
+          '/seven': (context) => SixthPage(),
           '/eight': (context) => Home(),
+          '/nine': (context) => result(),
         });
   }
 }

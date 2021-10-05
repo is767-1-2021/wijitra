@@ -1,7 +1,6 @@
 import 'package:team_app/models/first_form_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_app/pages/workout_result.dart';
 
 class workout extends StatelessWidget {
   @override
@@ -16,12 +15,8 @@ class workout extends StatelessWidget {
 }
 
 class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({Key? key}) : super(key: key);
-
   @override
-  _MyCustomFormState createState() {
-    return _MyCustomFormState();
-  }
+  _MyCustomFormState createState() => _MyCustomFormState();
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
@@ -97,10 +92,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Fill in calories burnt';
+                return 'kCal';
               }
 
               return null;
+            },
+            onSaved: (value) {
+              _time = int.parse(value!);
             },
           ),
           ElevatedButton(
@@ -111,13 +109,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 context.read<FirstFormModel>().date = _date;
                 context.read<FirstFormModel>().workout = _workout;
                 context.read<FirstFormModel>().time = _time;
-                //Navigator.pushNamed(context, '/1');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => result(),
-                  ),
-                );
+                Navigator.pop(context);
               }
             },
             child: Text('Done'),

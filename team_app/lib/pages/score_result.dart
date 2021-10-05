@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_app/models/first_form_model.dart';
+import 'package:team_app/models/food_form_model.dart';
 
-class score_result extends StatelessWidget {
+class SixthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,13 +49,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
             onSaved: (value) {
               _score = int.parse(value!);
             },
-            initialValue: context.read<FirstFormModel>().date.toString(),
+            initialValue: context.read<FoodFormModel>().score.toString(),
           ),
           ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
-                  context.read<FirstFormModel>().date = _score as String?;
+                  context.read<FoodFormModel>().score = _score;
 
                   Navigator.pop(context);
                 }

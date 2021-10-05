@@ -51,7 +51,7 @@ class sitemap extends StatelessWidget {
                       Icons.forward,
                       color: Colors.pink,
                     ),
-                    label: Text("BMR"),
+                    label: Text("Home"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.purple[800],
@@ -64,7 +64,7 @@ class sitemap extends StatelessWidget {
                 child: TextButton.icon(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => score()));
+                          MaterialPageRoute(builder: (context) => FirstPage()));
                     },
                     icon: Icon(
                       Icons.local_pizza,

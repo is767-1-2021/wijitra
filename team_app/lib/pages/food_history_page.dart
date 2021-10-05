@@ -1,15 +1,13 @@
 import 'package:provider/provider.dart';
 import 'package:team_app/models/food_form_model.dart';
 import 'package:flutter/material.dart';
-import 'package:team_app/pages/daily_meal.dart';
 
 class FoodHistory extends StatefulWidget {
   @override
-  _FoodHistoryState createState() => _FoodHistoryState();
+  _FirstPageState createState() => _FirstPageState();
 }
 
-class _FoodHistoryState extends State<FoodHistory> {
-  // String? _formData = 'Please click to fill the form';
+class _FirstPageState extends State<FoodHistory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +28,7 @@ class _FoodHistoryState extends State<FoodHistory> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => meal(),
-                  ),
-                );
+                Navigator.pushNamed(context, '/five');
               },
               child: Text('Fill this form please'),
             ),

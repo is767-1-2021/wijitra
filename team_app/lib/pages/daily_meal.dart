@@ -9,22 +9,21 @@ class meal extends StatelessWidget {
       appBar: AppBar(
         title: Text('Enter Date&Time and Menu'),
       ),
-      body: MyFoodCustomForm(),
+      body: MyCustomForm(),
     );
   }
 }
 
-class MyFoodCustomForm extends StatefulWidget {
+class MyCustomForm extends StatefulWidget {
   @override
-  _MyFoodCustomFormState createState() => _MyFoodCustomFormState();
+  _MyCustomFormState createState() => _MyCustomFormState();
 }
 
-class _MyFoodCustomFormState extends State<MyFoodCustomForm> {
+class _MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
   String? _date;
   String? _time;
   String? _menu;
-
   int? _kCal;
 
   @override

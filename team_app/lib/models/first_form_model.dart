@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
 class FirstFormModel extends ChangeNotifier {
-String? _date;
-String? _workout;
-int? _time;
- String? get date => this._date;
+  String? _date;
+  String? _workout;
+  int? _time;
+  int? _score;
 
- set date(String? value) => this._date = value;
+  String? get date => this._date;
 
- String? get workout => this._workout;
+  set date(String? value) => this._date = value;
 
- set workout(String? value) => this._workout = value;
+  String? get workout => this._workout;
 
- int? get time => this._time;
+  set workout(String? value) => this._workout = value;
 
- set time(int? value) => this._time = value;
+  int? get time => this._time;
+
+  set time(int? value) => this._time = value;
+
+  int? get score => this._score;
+
+  set score(int? value) => this._score = value;
 }
