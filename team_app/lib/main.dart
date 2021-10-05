@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black12,
         ),
         home: BMICalculatorScreen(),
-        initialRoute: '/nine',
+        initialRoute: '/one',
         routes: <String, WidgetBuilder>{
           '/one': (context) => Welcome(),
           '/two': (context) => BMICalculatorScreen(),
