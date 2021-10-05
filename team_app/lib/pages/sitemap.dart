@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:team_app/pages/daily_meal.dart';
 import 'package:team_app/pages/score.dart';
-import 'package:team_app/pages/workout.dart';
 import 'package:team_app/pages/menu_page.dart';
+import 'package:team_app/pages/workout_result.dart';
 import 'BMICalculatorScreen.dart';
 import 'Home_menu.dart';
+import 'note_result.dart';
 
 class sitemap extends StatelessWidget {
   @override
@@ -83,7 +83,7 @@ class sitemap extends StatelessWidget {
                 child: TextButton.icon(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => workout()));
+                          MaterialPageRoute(builder: (context) => result()));
                     },
                     icon: Icon(
                       Icons.wine_bar,
@@ -101,8 +101,10 @@ class sitemap extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => meal()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => noteresult()));
                     },
                     icon: Icon(
                       Icons.food_bank,

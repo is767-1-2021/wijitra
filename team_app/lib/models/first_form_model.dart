@@ -4,7 +4,7 @@ class FirstFormModel extends ChangeNotifier {
   String? _date;
   String? _workout;
   int? _time;
-  int? _score;
+  int? _kcal;
 
   String? get date => this._date;
 
@@ -18,7 +18,7 @@ class FirstFormModel extends ChangeNotifier {
 
   set time(int? value) => this._time = value;
 
-  int? get score => this._score;
+  int? get kcal => this._kcal;
 
-  set score(int? value) => this._score = value;
+  set kcal(int? value) => this._kcal = value;
 }

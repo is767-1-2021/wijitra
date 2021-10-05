@@ -27,11 +27,15 @@ class _FirstPageState extends State<FoodHistory> {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/five');
-              },
-              child: Text('Fill this form please'),
-            ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/five');
+                },
+                child: Text('Fill this form please'),
+                style: TextButton.styleFrom(
+                  primary: Colors.orangeAccent,
+                  backgroundColor: Colors.green[900],
+                  onSurface: Colors.black12,
+                )),
           ],
         ),
       ),

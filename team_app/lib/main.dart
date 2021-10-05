@@ -5,6 +5,7 @@ import 'models/first_form_model.dart';
 import 'models/food_form_model.dart';
 import 'pages/BMICalculatorScreen.dart';
 import 'pages/Home_menu.dart';
+import 'pages/note_page.dart';
 import 'pages/workout.dart';
 import 'pages/sitemap.dart';
 import 'pages/menu_page.dart';
@@ -49,7 +50,9 @@ class MyApp extends StatelessWidget {
           '/six': (context) => MenuPage(),
           '/seven': (context) => SixthPage(),
           '/eight': (context) => Home(),
-          '/nine': (context) => result(),
+          '/nine': (context) => workout(),
+          '/ten': (context) => result(),
+          '/eleven': (context) => NotePage(),
         });
   }
 }

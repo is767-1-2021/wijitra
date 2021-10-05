@@ -24,6 +24,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
   String? _date;
   String? _workout;
   int? _time;
+  int? _kcal;
 
   @override
   Widget build(BuildContext context) {
@@ -92,13 +93,13 @@ class _MyCustomFormState extends State<MyCustomForm> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'kCal';
+                return 'kcal';
               }
 
               return null;
             },
             onSaved: (value) {
-              _time = int.parse(value!);
+              _kcal = int.parse(value!);
             },
           ),
           ElevatedButton(
@@ -109,6 +110,8 @@ class _MyCustomFormState extends State<MyCustomForm> {
                 context.read<FirstFormModel>().date = _date;
                 context.read<FirstFormModel>().workout = _workout;
                 context.read<FirstFormModel>().time = _time;
+                context.read<FirstFormModel>().kcal = _kcal;
+
                 Navigator.pop(context);
               }
             },

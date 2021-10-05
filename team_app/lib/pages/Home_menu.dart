@@ -16,7 +16,7 @@ class _MainPageState extends State<Home> {
           title: Text("Main Page"),
         ),
         body: ListView(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.all(24),
           children: [
             buildQuoteCard(),
             buildImageCard(),
@@ -196,7 +196,7 @@ class _MainPageState extends State<Home> {
             Padding(
               padding: EdgeInsets.all(16).copyWith(bottom: 0),
               child: Text(
-                'The cat is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family.',
+                'A vast number of foods are both healthy and tasty. By filling your plate with fruits, vegetables, quality protein, and other whole foods, you’ll have meals that are colorful, versatile, and good for you.',
                 style: TextStyle(fontSize: 16),
               ),
             ),
@@ -242,19 +242,19 @@ class _MainPageState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Colored card',
+                'Don’t be afraid of trying something new.',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.tealAccent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 4),
               Text(
-                'This card is rounded and has a gradient',
+                'It’s easy to wonder which foods are healthiest.',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.white,
+                  color: Colors.brown,
                 ),
               ),
             ],

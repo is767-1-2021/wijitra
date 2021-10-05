@@ -38,7 +38,7 @@ class _MyNoteFormState extends State<MyNoteForm> {
     'Paleo',
     'Primal',
   ];
-  String _diet = 'None';
+  String _diet = 'Vegan';
   String? _meal;
   int _calories = 0;
   int _counter = 0;
@@ -138,7 +138,7 @@ class _MyNoteFormState extends State<MyNoteForm> {
                 child: Text(
                   priority,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.redAccent,
                     fontSize: 18.0,
                   ),
                 ),
