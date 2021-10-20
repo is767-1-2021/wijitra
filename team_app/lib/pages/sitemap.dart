@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:team_app/pages/score.dart';
+//import 'package:team_app/pages/score.dart';
 import 'package:team_app/pages/menu_page.dart';
+import 'package:team_app/pages/webview.dart';
 import 'package:team_app/pages/workout_result.dart';
+//import 'package:team_app/pages/workout_result.dart';
 import 'BMICalculatorScreen.dart';
 import 'Home_menu.dart';
+import 'News.dart';
 import 'note_result.dart';
 
 class sitemap extends StatelessWidget {
@@ -45,7 +48,7 @@ class sitemap extends StatelessWidget {
                 child: TextButton.icon(
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
+                          MaterialPageRoute(builder: (context) => result()));
                     },
                     icon: Icon(
                       Icons.forward,
@@ -63,8 +66,10 @@ class sitemap extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => FirstPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => WebViewExample()));
                     },
                     icon: Icon(
                       Icons.local_pizza,
@@ -82,8 +87,12 @@ class sitemap extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => result()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsPage(
+                                    title: '',
+                                  )));
                     },
                     icon: Icon(
                       Icons.wine_bar,

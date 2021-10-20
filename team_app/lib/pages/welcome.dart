@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_app/pages/Home_menu.dart';
 import 'package:team_app/pages/sitemap.dart';
+import 'package:team_app/pages/workout_result.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _WelcomeState extends State<Welcome> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => result(),
                       ),
                     );
                   },
