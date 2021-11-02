@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           '/five': (context) => meal(),
           '/six': (context) => MenuPage(),
           '/seven': (context) => SixthPage(),
-          //'/eight': (context) => Home(),
+          '/eight': (context) => Home(),
           '/nine': (context) => workout(),
           '/ten': (context) => result(),
           '/eleven': (context) => NotePage(),

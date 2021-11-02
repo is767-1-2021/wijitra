@@ -1,4 +1,5 @@
 //import 'package:first_app/models/first_form_model.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:first_app/pages/eighth_page.dart';
 import 'package:first_app/pages/todo_page.dart';
 import 'package:first_app/services/services.dart';
@@ -16,7 +17,11 @@ import 'pages/third_page.dart';
 import 'pages/todo_page.dart';
 import 'services/services.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  var services = FirebaseServices();
   /*runApp(
     MultiProvider(
       providers: [
@@ -27,7 +32,6 @@ void main() {
       child: MyApp(),
     ),
   );*/
-  var services = HttpServices();
   var controller = TodoController(services);
 
   runApp(TodoApp(controller: controller));
