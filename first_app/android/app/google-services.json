@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "38851986379",
-    "project_id": "fir-app-f960a",
-    "storage_bucket": "fir-app-f960a.appspot.com"
+    "project_number": "818638033842",
+    "project_id": "is767-2021-ondiet",
+    "storage_bucket": "is767-2021-ondiet.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:38851986379:android:f7091b3cc6ba2f9acdec4e",
+        "mobilesdk_app_id": "1:818638033842:android:a03a74d37cdc168cf18aab",
         "android_client_info": {
           "package_name": "com.example.first_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "38851986379-leo7sanbbnm5h8spjedac8rhhg98kk9c.apps.googleusercontent.com",
+          "client_id": "818638033842-hujv9odbdvkj0rvlc518sl67egf0ub23.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBUX7J3hnpIvlDZYVsCbQOw7CyUHTBEcj8"
+          "current_key": "AIzaSyBWHsos8W2x0m_6OnFRUmpeKzCrWUWmbuY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "38851986379-leo7sanbbnm5h8spjedac8rhhg98kk9c.apps.googleusercontent.com",
+              "client_id": "818638033842-hujv9odbdvkj0rvlc518sl67egf0ub23.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

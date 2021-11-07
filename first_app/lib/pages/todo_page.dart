@@ -31,6 +31,10 @@ class _TodoPageState extends State<TodoPage> {
     });
   }
 
+  void _updateTodos(int _id, bool _completed) async {
+    await widget.controller.updateTodo(_id, _completed);
+  }
+
   Widget get body => isLoading
       ? CircularProgressIndicator()
       : ListView.builder(
@@ -39,10 +43,24 @@ class _TodoPageState extends State<TodoPage> {
             if (todos.isEmpty) {
               return Text("Tap button to fetch Todos");
             }
-
             return CheckboxListTile(
-              onChanged: null,
+              onChanged: (bool? value) {
+                setState(() {
+                  todos[index].completed = value!;
+                  _updateTodos(todos[index].id, value);
+                });
+              },
+              //onChanged: null,
               value: todos[index].completed,
+              //value: value,
+              //onChanged: (value) =>
+              //  setState(() => this.todos[index].completed = value!),
+              //value: todo.isDone,
+              /*onChanged: (_) {
+                  final provider =
+                      Provider.of<TodosProvider>(context, listen: false);
+                  final isDone = provider.toggleTodoStatus(todo);*/
+
               title: Text(todos[index].title),
             );
           },
@@ -59,6 +77,9 @@ class _TodoPageState extends State<TodoPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getTodos,
+        //onPressed: () {
+        //var instance = FirebaseFirestore.instance.collection('todos');
+        // },
         child: Icon(Icons.add),
       ),
     );
