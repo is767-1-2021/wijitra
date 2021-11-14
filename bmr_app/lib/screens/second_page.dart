@@ -570,7 +570,7 @@ class _SecondPageState extends State<SecondPage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Button(
                     color: kBottomReturnButtonColor,
                     text: Text(
@@ -585,11 +585,27 @@ class _SecondPageState extends State<SecondPage> {
                   ),
                 ),
                 Expanded(
-                  flex: 7,
+                  flex: 5,
                   child: Button(
                     color: kBottomButtonColor,
                     text: Text(
-                      'SHARE MY BMI AND DAILY GOAL',
+                      'SAVE RECORD',
+                      style: TextStyle(
+                        fontFamily: "Jaapokki",
+                      ),
+                    ),
+                    onTap: () {
+                      Share.share(
+                          'My BMI score is ${widget.bmiResult}. I have ${widget.resultText.toLowerCase()}. I want eat ${returnedBMR.toStringAsFixed(0)} kcal daily.');
+                    },
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Button(
+                    color: kBottomButtonColor,
+                    text: Text(
+                      'SHARE RECORD',
                       style: TextStyle(
                         fontFamily: "Jaapokki",
                       ),

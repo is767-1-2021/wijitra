@@ -13,7 +13,7 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
   Ondiet_manu myStudent =
-      Ondiet_manu(email: '', fname: '', lname: '', score: '');
+      Ondiet_manu(email: '', foods: '', drink: '', kcal: '');
   //เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   CollectionReference _studentCollection =
@@ -54,8 +54,8 @@ class _FormScreenState extends State<FormScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "กรุณาป้อนชื่ออาหาร"),
-                          onSaved: (String? fname) {
-                            myStudent.fname = fname!;
+                          onSaved: (String? foods) {
+                            myStudent.foods = foods!;
                           },
                         ),
                         SizedBox(
@@ -68,8 +68,8 @@ class _FormScreenState extends State<FormScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "กรุณาป้อนรายการเครื่องดื่ม"),
-                          onSaved: (String? lname) {
-                            myStudent.lname = lname!;
+                          onSaved: (String? drink) {
+                            myStudent.drink = drink!;
                           },
                         ),
                         SizedBox(
@@ -100,8 +100,8 @@ class _FormScreenState extends State<FormScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "กรุณาป้อนจำนวนKcal"),
-                          onSaved: (String? score) {
-                            myStudent.score = score!;
+                          onSaved: (String? kcal) {
+                            myStudent.kcal = kcal!;
                           },
                           keyboardType: TextInputType.number,
                         ),
@@ -116,10 +116,10 @@ class _FormScreenState extends State<FormScreen> {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
                                   await _studentCollection.add({
-                                    "fname": myStudent.fname,
-                                    "lname": myStudent.lname,
+                                    "foods": myStudent.foods,
+                                    "drink": myStudent.drink,
                                     "email": myStudent.email,
-                                    "score": myStudent.score
+                                    "kcal": myStudent.kcal
                                   });
                                   formKey.currentState!.reset();
                                 }

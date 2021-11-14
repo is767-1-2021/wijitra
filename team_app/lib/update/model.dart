@@ -1,12 +1,12 @@
 class Ondiet_manu {
-  String fname;
-  String lname;
+  String foods;
+  String drink;
   String email;
-  String score;
+  String kcal;
 
   Ondiet_manu(
-      {required this.fname,
-      required this.lname,
+      {required this.foods,
+      required this.drink,
       required this.email,
-      required this.score});
+      required this.kcal});
 }

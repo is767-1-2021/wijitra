@@ -27,10 +27,10 @@ class _DisplayScreenState extends State<DisplayScreen> {
                     leading: CircleAvatar(
                       radius: 30,
                       child: FittedBox(
-                        child: Text(document["score"]),
+                        child: Text(document["kcal"]),
                       ),
                     ),
-                    title: Text(document["fname"] + document["lname"]),
+                    title: Text(document["foods"] + document["drink"]),
                     subtitle: Text(document["email"]),
                   ),
                 );
