@@ -17,7 +17,7 @@ class _FormScreenState extends State<FormScreen> {
   //เตรียม firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   CollectionReference _studentCollection =
-      FirebaseFirestore.instance.collection("students");
+      FirebaseFirestore.instance.collection("Ondiet_manu");
 
   @override
   Widget build(BuildContext context) {
