@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
 import 'package:todo_app_firestore_example/bmi_bmr/components/background_card.dart';
 import 'package:todo_app_firestore_example/bmi_bmr/components/buttons.dart';
+import 'package:todo_app_firestore_example/page/home_page.dart';
 
 import '../constants.dart';
 
@@ -596,8 +597,8 @@ class _SecondPageState extends State<SecondPage> {
                       ),
                     ),
                     onTap: () {
-                      Share.share(
-                          'My BMI score is ${widget.bmiResult}. I have ${widget.resultText.toLowerCase()}. I want eat ${returnedBMR.toStringAsFixed(0)} kcal daily.');
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
                     },
                   ),
                 ),

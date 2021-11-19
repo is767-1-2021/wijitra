@@ -23,7 +23,7 @@ class _AddTodoDialogWidgetState extends State<AddTodoDialogWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Add Todo',
+                'Add bmi',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,

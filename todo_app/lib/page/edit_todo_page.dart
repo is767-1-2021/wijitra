@@ -30,7 +30,7 @@ class _EditTodoPageState extends State<EditTodoPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Edit Todo'),
+          title: Text('Edit ประวัติ'),
           actions: [
             IconButton(
               icon: Icon(Icons.delete),

@@ -12,7 +12,7 @@ class CompletedListWidget extends StatelessWidget {
     return todos.isEmpty
         ? Center(
             child: Text(
-              'No completed tasks.',
+              'ประว้ติย้อนหลัง',
               style: TextStyle(fontSize: 20),
             ),
           )

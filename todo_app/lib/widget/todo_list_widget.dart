@@ -12,7 +12,7 @@ class TodoListWidget extends StatelessWidget {
     return todos.isEmpty
         ? Center(
             child: Text(
-              'No todos.',
+              'ไม่มีประวัติ',
               style: TextStyle(fontSize: 20),
             ),
           )
