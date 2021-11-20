@@ -37,10 +37,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: Welcome(),
-        initialRoute: '/eight',
+        home: HomeScreen(),
+        initialRoute: '/one',
         routes: <String, WidgetBuilder>{
-          '/one': (context) => HomeScreen(),
+          '/one': (context) => Welcome(),
           '/two': (context) => BMICalculatorScreen(),
           '/three': (context) => sitemap(),
           '/four': (context) => HomeScreen(),

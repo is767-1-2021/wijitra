@@ -1,13 +1,12 @@
+import 'package:exercise_app/old/pages/cat.dart';
 import 'package:exercise_app/old/pages/webview.dart';
+import 'package:exercise_app/old/update/form.dart';
 import 'package:exercise_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 //import 'package:team_app/pages/score.dart';
 //import 'package:team_app/pages/workout_result.dart';
 import 'BMICalculatorScreen.dart';
-import 'Home_menu.dart';
-import 'News.dart';
 import 'menu_page.dart';
-import 'note_result.dart';
 
 class sitemap extends StatelessWidget {
   @override
@@ -35,7 +34,7 @@ class sitemap extends StatelessWidget {
                       Icons.health_and_safety_sharp,
                       color: Colors.pink,
                     ),
-                    label: Text("BMI"),
+                    label: Text("Check BMI&BMR"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.pink[900],
@@ -56,7 +55,7 @@ class sitemap extends StatelessWidget {
                       Icons.forward,
                       color: Colors.pink,
                     ),
-                    label: Text("Home"),
+                    label: Text("Exercise Record"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.purple[800],
@@ -77,7 +76,7 @@ class sitemap extends StatelessWidget {
                       Icons.local_pizza,
                       color: Colors.pink,
                     ),
-                    label: Text("ประเมิณ"),
+                    label: Text("News"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.green[900],
@@ -92,15 +91,13 @@ class sitemap extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NewsPage(
-                                    title: '',
-                                  )));
+                              builder: (context) => FormScreen()));
                     },
                     icon: Icon(
                       Icons.wine_bar,
                       color: Colors.pink,
                     ),
-                    label: Text("workout"),
+                    label: Text("Meal Record"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.blue[900],
@@ -112,16 +109,14 @@ class sitemap extends StatelessWidget {
               Container(
                 child: TextButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => noteresult()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Cat()));
                     },
                     icon: Icon(
                       Icons.food_bank,
                       color: Colors.pink,
                     ),
-                    label: Text("meal"),
+                    label: Text("Tips"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.redAccent,
@@ -140,7 +135,7 @@ class sitemap extends StatelessWidget {
                       Icons.umbrella,
                       color: Colors.pink,
                     ),
-                    label: Text("menu"),
+                    label: Text("Recipe"),
                     style: TextButton.styleFrom(
                       primary: Colors.orangeAccent,
                       backgroundColor: Colors.teal[900],

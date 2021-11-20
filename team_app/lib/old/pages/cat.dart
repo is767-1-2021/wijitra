@@ -15,7 +15,7 @@ class _MainPageState extends State<Cat> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text("Main Page"),
+          title: Text("Tips!"),
         ),
         body: ListView(
           padding: EdgeInsets.all(24),
