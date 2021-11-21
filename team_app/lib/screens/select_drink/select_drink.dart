@@ -1,76 +1,51 @@
 import 'package:dropdown_search/dropdown_search.dart';
-import 'package:exercise_app/model/exercise.dart';
-import 'package:exercise_app/screens/add_custom_exercise/add_custom_exercise.dart';
-import 'package:exercise_app/services/app_controller.dart';
+import 'package:exercise_app/model/drink.dart';
+import 'package:exercise_app/screens/add_custom_drink/add_custom_drink.dart';
+import 'package:exercise_app/services/drink_controller.dart';
 import 'package:exercise_app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SelectExercise extends StatefulWidget {
+class SelectDrink extends StatefulWidget {
 
-  final List<Exercise> selectedDayExerciseList;
+  final List<Drink> selectedDayDrinkList;
   final String selectedDateText;
   final DateTime selectedDate;
-  SelectExercise({required this.selectedDateText, required this.selectedDate, required this.selectedDayExerciseList});
+  SelectDrink({required this.selectedDateText, required this.selectedDate, required this.selectedDayDrinkList});
 
   @override
-  _SelectExerciseState createState() => _SelectExerciseState();
+  _SelectDrinkState createState() => _SelectDrinkState();
 }
 
-class _SelectExerciseState extends State<SelectExercise> {
+class _SelectDrinkState extends State<SelectDrink> {
 
-  List<Exercise> exercises = [];
-  Exercise? selectedExercise;
+  List<Drink> drinks = [];
+  Drink? selectedDrink;
   bool loading = true;
 
   @override
   void initState() {
     super.initState();
-    getAllExercises(); //From Firebase
+    getAllDrinks(); //From Firebase
   }
   
-  Future<void> getAllExercises() async {
-    exercises = await AppController().getAllExercises();
+  Future<void> getAllDrinks() async {
+    drinks = await DrinkController().getAllDrinks();
     //Remove already selected exercises if any
-    for(int i=0; i < widget.selectedDayExerciseList.length; i ++){
-      exercises.removeWhere((exercise) => exercise.exerciseId == widget.selectedDayExerciseList[i].exerciseId);
+    for(int i=0; i < widget.selectedDayDrinkList.length; i ++){
+      drinks.removeWhere((drink) => drink.drinkId == widget.selectedDayDrinkList[i].drinkId);
     }
     setState(() {
       loading = false;
     });
   }
 
-  Future<void> selectTime() async {
-    DateTime showTime = DateTime.now();
-    showTime = new DateTime(showTime.year, showTime.month, showTime.day, 1, 0, 0, 0, 0);
 
-    final time = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(showTime),
-      initialEntryMode: TimePickerEntryMode.dial
-    );
-
-    if(time == null)
-      print('Time canceled');
-    else
-    {
-      print(time.hour);
-      int totalMinutes = (time.hour * 60) + time.minute;
-      selectedExercise!.userTimeMinutesSelected = totalMinutes;
-      selectedExercise!.userTimeSelected = (time.minute >0) ? "${time.hour}:${time.minute}" : "${time.hour}";
-      selectedExercise!.userTimeBasedCalories = (selectedExercise!.userTimeMinutesSelected * selectedExercise!.caloriesPerMinute).toInt();
-      widget.selectedDayExerciseList.add(selectedExercise!); 
-      //remove selected exercise from list
-      exercises.removeWhere((exercise) => exercise.exerciseId == selectedExercise!.exerciseId);
-      setState(() {});
-    }
-  }
-
-  Future<void> showCustomExerciseDialog() async {
+  Future<void> showCustomDrinkDialog() async {
     dynamic customCategoryAdded = await Get.generalDialog(
       pageBuilder: (context, __, ___) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        content: AddCustomExercise(),
+        content: AddCustomDrink(),
       )
     );
 
@@ -78,7 +53,7 @@ class _SelectExerciseState extends State<SelectExercise> {
     if(customCategoryAdded != null)
     {
       setState(() {
-        widget.selectedDayExerciseList.add(customCategoryAdded);
+        widget.selectedDayDrinkList.add(customCategoryAdded);
       });
     }
   }
@@ -97,7 +72,7 @@ class _SelectExerciseState extends State<SelectExercise> {
         elevation: 0,
         actions: [
           GestureDetector(
-            onTap: showCustomExerciseDialog,
+            onTap: showCustomDrinkDialog,
             child: Container(
               margin: EdgeInsets.all(7),
               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -107,7 +82,7 @@ class _SelectExerciseState extends State<SelectExercise> {
               ),
               child: Center(
                 child: Text(
-                  'Custom Exercise',
+                  'Custom Drink',
                   style: TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
@@ -127,7 +102,7 @@ class _SelectExerciseState extends State<SelectExercise> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Exercises
-            if(exercises.length>0)
+            if(drinks.length>0)
             Container(
               height: SizeConfig.blockSizeVertical * 7,
               decoration: BoxDecoration(
@@ -136,17 +111,17 @@ class _SelectExerciseState extends State<SelectExercise> {
               ),
               margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Center(
-                child: DropdownSearch<Exercise>(
+                child: DropdownSearch<Drink>(
                   mode: Mode.BOTTOM_SHEET,
-                  hint: "Search for Exercies",
-                  items: exercises,
-                  itemAsString: (Exercise u){
-                    return u.exerciseName + '\n' + u.totalTimeInHours.toString() + "hours" + " - " + u.exerciseKCalPerHour.toString();
+                  hint: "Search for Drinks",
+                  items: drinks,
+                  itemAsString: (Drink u){
+                    return u.drinkName + '\n' + u.totalCups.toString() + "cups" + " - " + u.drinkKCalPerCup.toString();
                   },
                   onChanged: (data) {
                     setState(() {
-                      selectedExercise = data;  
-                      selectTime();
+                      selectedDrink = data;  
+                  
                     });
                   },
                   showSearchBox: true,
@@ -165,10 +140,10 @@ class _SelectExerciseState extends State<SelectExercise> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 child: ListView.builder(
-                itemCount: widget.selectedDayExerciseList.length,
+                itemCount: widget.selectedDayDrinkList.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return selectedExerciseCell(widget.selectedDayExerciseList[index], index);
+                  return selectedDrinkCell(widget.selectedDayDrinkList[index], index);
                 })
               ),
             )
@@ -177,7 +152,7 @@ class _SelectExerciseState extends State<SelectExercise> {
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () async {
-          await Exercise.saveExercisesForDate(widget.selectedDate, widget.selectedDayExerciseList);
+          await Drink.saveDrinksForDate(widget.selectedDate, widget.selectedDayDrinkList);
           Get.back();
         },
         child: Container(
@@ -202,16 +177,16 @@ class _SelectExerciseState extends State<SelectExercise> {
     );
   }
 
-  Widget _customDropDownExample(BuildContext context, Exercise? exercise, String itemDesignation) {
+  Widget _customDropDownExample(BuildContext context, Drink? drink, String itemDesignation) {
     return Container(
       child :Text(
-        'Search for Exercise',
+        'Search for Drinks',
         style: TextStyle(color: Colors.grey, fontSize: SizeConfig.fontSize * 2),
       ),
     );
   }
 
-  Widget selectedExerciseCell(Exercise exercise, int index){
+  Widget selectedDrinkCell(Drink drink, int index){
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
@@ -224,7 +199,7 @@ class _SelectExerciseState extends State<SelectExercise> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '${exercise.exerciseName}',
+              '${drink.drinkName}',
               style: TextStyle(
                 fontSize: SizeConfig.fontSize * 2.2,
                 fontWeight: FontWeight.w500
@@ -232,9 +207,9 @@ class _SelectExerciseState extends State<SelectExercise> {
             ),
             GestureDetector(
               onTap: () async {
-                widget.selectedDayExerciseList.removeAt(index);
+                widget.selectedDayDrinkList.removeAt(index);
                 setState(() {});
-                await Exercise.saveExercisesForDate(widget.selectedDate, widget.selectedDayExerciseList); 
+                await Drink.saveDrinksForDate(widget.selectedDate, widget.selectedDayDrinkList); 
               },
               child: Icon(Icons.remove_circle, color: Colors.red,)
             )
@@ -246,7 +221,7 @@ class _SelectExerciseState extends State<SelectExercise> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [                   
               Text(
-                '${exercise.userTimeSelected} hour',
+                '${drink.userCupSelected} cup',
                 style: TextStyle(
                   fontSize: SizeConfig.fontSize * 1.8,
                   fontWeight: FontWeight.w500,
@@ -256,7 +231,7 @@ class _SelectExerciseState extends State<SelectExercise> {
 
 
               Text(
-                '${exercise.userTimeBasedCalories} kcal',
+                '${drink.userBasedCalories} kcal',
                 style: TextStyle(
                   fontSize: SizeConfig.fontSize * 1.8,
                   fontWeight: FontWeight.w500,

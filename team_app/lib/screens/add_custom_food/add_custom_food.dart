@@ -1,20 +1,19 @@
-import 'package:exercise_app/model/exercise.dart';
-import 'package:exercise_app/services/app_controller.dart';
+import 'package:exercise_app/model/food.dart';
 import 'package:exercise_app/utils/constants.dart';
 import 'package:exercise_app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class AddCustomExercise extends StatefulWidget {
+class AddCustomFood extends StatefulWidget {
 
   @override
-  _AddCustomExerciseState createState() => _AddCustomExerciseState();
+  _AddCustomFoodState createState() => _AddCustomFoodState();
 }
 
-class _AddCustomExerciseState extends State<AddCustomExercise> {
+class _AddCustomFoodState extends State<AddCustomFood> {
 
-  TextEditingController exerciseName = TextEditingController();
+  TextEditingController FoodName = TextEditingController();
   TextEditingController kcal = TextEditingController();
   TextEditingController timeField = TextEditingController();
   TimeOfDay? timeUser;
@@ -36,22 +35,19 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
       setState(() {});
     }
   }
-  
 
-  void saveExercise(){
-    int totalMinutes = (timeUser!.hour * 60) + timeUser!.minute;
-    Exercise customExercise = Exercise.fromEmpty();
-    customExercise.exerciseId = DateTime.now().millisecondsSinceEpoch.toString();
-    customExercise.exerciseName = exerciseName.text;
-    customExercise.totalTimeInMinutes = totalMinutes;
-    customExercise.exerciseKCalPerHour = int.parse(kcal.text);
-    customExercise.totalTimeInHours = (customExercise.totalTimeInMinutes~/60).toInt();
-    customExercise.caloriesPerMinute = customExercise.exerciseKCalPerHour/customExercise.totalTimeInMinutes;
-    customExercise.userTimeMinutesSelected = totalMinutes;
-    customExercise.userTimeSelected = (timeUser!.minute >0) ? "${timeUser!.hour}:${timeUser!.minute}" : "${timeUser!.hour}";
-    customExercise.userTimeBasedCalories = (customExercise.userTimeMinutesSelected * customExercise.caloriesPerMinute).toInt();
-    AppController().addExercise(customExercise.exerciseId, customExercise.exerciseName, customExercise.caloriesPerMinute);
-    Get.back(result: customExercise);
+  void saveFood(){
+    int totalDishes = (timeUser!.hour * 60) + timeUser!.minute;
+    Food customFood = Food.fromEmpty();
+    customFood.foodId = DateTime.now().millisecondsSinceEpoch.toString();
+    customFood.foodName = FoodName.text;
+    customFood.totalDishes = totalDishes;
+    customFood.foodKCalPerDish = int.parse(kcal.text);
+    //customFood.caloriesPerMinute = customFood.foodKCalPerDish/customFood.totalDishes;
+    //customFood.userTimeMinutesSelected = totalDishes;
+    //customFood.userTimeSelected = (timeUser!.minute >0) ? "${timeUser!.hour}:${timeUser!.minute}" : "${timeUser!.hour}";
+    //customFood.userTimeBasedCalories = (customFood.userTimeMinutesSelected * customFood.caloriesPerMinute).toInt();
+    Get.back(result: customFood);
   }
 
   @override
@@ -69,7 +65,7 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
             Container(
               child: Center(
                 child: Text(
-                  'Add Custom Exercise',
+                  'Add Custom Food',
                   style :TextStyle(color: Colors.green, fontSize: SizeConfig.fontSize * 2.3, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -85,9 +81,9 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
               child: Center(
                 child: TextField(
                   style: TextStyle(fontSize: SizeConfig.fontSize * 1.8),
-                  controller: exerciseName,
+                  controller: FoodName,
                   decoration: new InputDecoration(
-                    hintText: "Exercise Name",
+                    hintText: "Food Name",
                     hintStyle: TextStyle(color: Colors.green, fontSize: SizeConfig.fontSize * 1.8),
                     border: InputBorder.none,
                   ),
@@ -109,7 +105,7 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   keyboardType : TextInputType.number,
                   decoration: new InputDecoration(
-                    hintText: "Calories Burned",
+                    hintText: "Calories",
                     hintStyle: TextStyle(color: Colors.green, fontSize: SizeConfig.fontSize * 1.8),
                     border: InputBorder.none,
                   ),
@@ -125,26 +121,19 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
                 color : Colors.grey[300]
               ),
               child: Center(
-                child: GestureDetector(
-                  onTap: (){
-                    selectTime();
-                  },
-                  child: TextField(
+                child: TextField(
                     style: TextStyle(fontSize: SizeConfig.fontSize * 1.8),
                     readOnly: true,
                     enabled: false,
                     controller: timeField,
                     decoration: new InputDecoration(
-                      hintText: "Exercise Time",
+                      hintText: "Dish",
                       hintStyle: TextStyle(color: Colors.green, fontSize: SizeConfig.fontSize * 1.8),
                       border: InputBorder.none,
-                    ),
                   ),
                 ),
               ),
-            ),
-
-          
+            ),       
 
             Container(
               margin: EdgeInsets.only(top: 20),
@@ -177,15 +166,15 @@ class _AddCustomExerciseState extends State<AddCustomExercise> {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        if(exerciseName.text.isEmpty)
-                          Constants.showDialog('Please enter exercise name');
+                        if(FoodName.text.isEmpty)
+                          Constants.showDialog('Please enter food name');
                         else if(kcal.text.isEmpty)
-                          Constants.showDialog('Please enter calories burned');
+                          Constants.showDialog('Please enter calories');
                         else if(timeField.text.isEmpty)
-                          Constants.showDialog('Please enter time');
+                          Constants.showDialog('Please enter dish');
                         else
                         {
-                          saveExercise();
+                          saveFood();
                         }
                       },
                       child: Text(
