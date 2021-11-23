@@ -8,46 +8,14 @@ class DrinkController {
   final firestoreInstance = FirebaseFirestore.instance;
 
   //Delivery Areas via CSV
-  Future addAllDrinks(List<List<dynamic>> data) async {
-    try {
-      dynamic result = true;
-      for(int i =1; i < data.length; i ++)
-      {
-        String name =  data[i][0];
-        int kcal = data[i][1];
-        await firestoreInstance.collection("Drinks").add({
-          'drinkName': name,
-          'kcal': kcal,
-          'totalCups' : 1,
-          'totalkcal' : (kcal*1)
-        }).then((doc) async {
-          print("success!");
-          return true;
-        }).catchError((error) {
-          print("Failed to add user: $error");
-          return false;
-        });
-      }
-
-      if (result)
-      {
-        Map finalResponse = <dynamic, dynamic>{}; //empty map
-        finalResponse['Status'] = "Success";
-        return finalResponse;
-      }
-    } catch (e) {
-      print(e.toString());
-      return setUpFailure();
-    }
-  }
-
-  Future addDrink(String drinkName, int kCal, int totalCups) async {
-    try {   
-      dynamic result = await firestoreInstance.collection("Drinks").add({
+  Future addAllDrinks(String drinkId, String drinkName, double totalkcal) async {
+   try {   
+      int kCal = (totalkcal * 1).toInt();
+      dynamic result = await firestoreInstance.collection("Drinks").doc(drinkId).set({
         'drinkName': drinkName,
-        'kcal': kCal,
-        'totalCups' : totalCups,
-        'totalkcal' : (kCal*totalCups)
+        'kCal': kCal,
+        'totalCup' : 1,
+        'totalkcal' : totalkcal
       }).then((doc) async {
         print("success!");
         return true;
@@ -94,11 +62,11 @@ class DrinkController {
       if (result)
       {
         drinkList.sort((a, b) => a.drinkName.toString().compareTo(b.drinkName.toString()));
-        return drinkList;
+        return  drinkList;
       }
       else
       {
-        return drinkList;
+        return  drinkList;
       }
     } catch (e) {
       print(e.toString());

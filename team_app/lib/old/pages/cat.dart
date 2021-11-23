@@ -1,6 +1,6 @@
+import 'package:exercise_app/bmi_bmr/pages/BMICalculatorScreen.dart';
 import 'package:flutter/material.dart';
 
-import 'BMICalculatorScreen.dart';
 import 'food_history_page.dart';
 import 'menu_page.dart';
 

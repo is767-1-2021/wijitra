@@ -1,4 +1,5 @@
 import 'package:exercise_app/model/drink.dart';
+import 'package:exercise_app/services/drink_controller.dart';
 import 'package:exercise_app/utils/constants.dart';
 import 'package:exercise_app/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +24,12 @@ class _AddCustomDrinkState extends State<AddCustomDrink> {
     Drink customDrink = Drink.fromEmpty();
     customDrink.drinkId = DateTime.now().millisecondsSinceEpoch.toString();
     customDrink.drinkName = drinkName.text; 
-    customDrink.totalCups = totalCups;
     customDrink.drinkKCalPerCup = int.parse(kcal.text);
+    customDrink.totalCups = totalCups;
+    customDrink.totalkcal = customDrink.drinkKCalPerCup/(1/customDrink.totalCups);
     customDrink.userCupSelected = int.parse(cup.text);
-    customDrink.userBasedCalories = (customDrink.drinkKCalPerCup * int.parse(cup.text)).toInt();
+    customDrink.userBasedCalories = (customDrink.totalkcal).toInt();
+    DrinkController().addAllDrinks(customDrink.drinkId,customDrink.drinkName,customDrink.totalkcal);
     Get.back(result: customDrink);
   }
 
@@ -70,6 +73,7 @@ class _AddCustomDrinkState extends State<AddCustomDrink> {
                 ),
               ),
             ),
+            
 
             Container(
               margin: EdgeInsets.only(top: 10),
