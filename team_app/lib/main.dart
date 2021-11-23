@@ -42,8 +42,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: HomeScreen(),
-        initialRoute: '/ten',
+        home: BMI_Data_Screen(),
+        initialRoute: '/two',
         routes: <String, WidgetBuilder>{
           '/one': (context) => Welcome(),
           '/two': (context) => BMICalculatorScreen(),

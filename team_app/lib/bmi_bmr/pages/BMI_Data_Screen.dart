@@ -1,14 +1,13 @@
 // ignore_for_file: file_names
 
-// ignore: unused_import
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:exercise_app/bmi_bmr/models/BMIModel.dart';
-import 'package:exercise_app/bmi_bmr/pages/BMICalculatorScreen.dart';
-import 'package:exercise_app/bmi_bmr/pages/ResultFemale.dart';
-import 'package:exercise_app/bmi_bmr/pages/Resultmale.dart';
-
+import 'package:first_app/controllers/todo.dart';
+import 'package:first_app/models/BMIModel.dart';
+import 'package:first_app/pages/BMICalculatorScreen.dart';
+import 'package:first_app/pages/ResultFemale.dart';
+import 'package:first_app/pages/Resultmale.dart';
 import 'package:flutter/material.dart';
 
 class BMI_Data_Screen extends StatefulWidget {
@@ -22,6 +21,10 @@ class _BMI_Data_ScreenState extends State<BMI_Data_Screen> {
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection('Ondiet_bmi').snapshots();
   late BMIModel _bmiModel;
+
+  void _getBmiTodos(BMIModel bmiModel) async {
+    await TodoController().getBmi(bmiModel, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,29 +77,10 @@ class _BMI_Data_ScreenState extends State<BMI_Data_Screen> {
                         isNormal: data['isNormal'],
                         isOver: data['isOver'],
                         isUnder: data['isUnder'],
-                        comments: '');
-                    //print(document.id);
-                    if (data['sex'] == "Male") {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultMale(
-                            bmiModel: _bmiModel,
-                            bmrModel: data['bmr'].toStringAsFixed(2),
-                          ),
-                        ),
-                      );
-                    } else {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ResultFemale(
-                            bmiModel: _bmiModel,
-                            bmrModel: data['bmr'].toStringAsFixed(2),
-                          ),
-                        ),
-                      );
-                    }
+                        comments: '',
+                        sex: data['sex']);
+
+                    _getBmiTodos(_bmiModel);
                   },
                   child: Text("BMI => " +
                       data['bmi'].toStringAsFixed(2) +
