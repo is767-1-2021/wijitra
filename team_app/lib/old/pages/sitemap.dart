@@ -1,4 +1,3 @@
-import 'package:exercise_app/bmi_bmr/pages/BMICalculatorScreen.dart';
 import 'package:exercise_app/old/pages/cat.dart';
 import 'package:exercise_app/old/pages/webview.dart';
 import 'package:exercise_app/old/update/form.dart';
@@ -6,6 +5,7 @@ import 'package:exercise_app/screens/home/home.dart';
 import 'package:flutter/material.dart';
 //import 'package:team_app/pages/score.dart';
 //import 'package:team_app/pages/workout_result.dart';
+import 'BMICalculatorScreen.dart';
 import 'menu_page.dart';
 
 class sitemap extends StatelessWidget {

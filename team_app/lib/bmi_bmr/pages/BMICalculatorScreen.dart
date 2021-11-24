@@ -1,13 +1,13 @@
 // ignore_for_file: file_names
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:exercise_app/bmi_bmr/controllers/todo.dart';
 import 'package:exercise_app/bmi_bmr/models/BMIModel.dart';
-import 'package:exercise_app/bmi_bmr/services/bmi_service.dart';
+
 import 'package:flutter/material.dart';
 
 import 'ResultFemale.dart';
 import 'Resultmale.dart';
 
-// ignore: unused_element
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class BMICalculatorScreen extends StatefulWidget {
@@ -22,6 +22,10 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
   double _bmr = 0;
   int _age = 0;
   late BMIModel _bmiModel;
+
+  void _addBmiTodos(BMIModel bmi) async {
+    await TodoController().addBmi(bmi, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,48 +194,55 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
 
                         if (_bmi >= 18.5 && _bmi <= 25) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: true,
                               isUnder: false,
                               isOver: false,
-                              comments: "Your BMI is Normal");
+                              comments: "Your BMI is Normal",
+                              sex: "Female");
                         } else if (_bmi < 18.5) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: true,
                               isOver: false,
-                              comments: "You are Underweighted");
+                              comments: "You are Underweighted",
+                              sex: "Female");
                         } else if (_bmi > 25 && _bmi <= 30) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: false,
                               isOver: true,
-                              comments: "You are Overweighted");
+                              comments: "You are Overweighted",
+                              sex: "Female");
                         } else {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: false,
                               isOver: false,
-                              comments: "You are Obesed");
+                              comments: "You are Obesed",
+                              sex: "Female");
                         }
                       });
-
-                      await ServiceBmi().AddBmi('Female', _bmiModel);
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResultFemale(
-                                    bmiModel: _bmiModel,
-                                    bmrModel: _bmr.toString(),
-                                  )));
+                      _addBmiTodos(_bmiModel);
                     },
                     icon: Icon(
                       Icons.female,
@@ -263,48 +274,55 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
 
                         if (_bmi >= 18.5 && _bmi <= 25) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: true,
                               isUnder: false,
                               isOver: false,
-                              comments: "Your BMI is Normal");
+                              comments: "Your BMI is Normal",
+                              sex: "Male");
                         } else if (_bmi < 18.5) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: true,
                               isOver: false,
-                              comments: "You are Underweighted");
+                              comments: "You are Underweighted",
+                              sex: "Male");
                         } else if (_bmi > 25 && _bmi <= 30) {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: false,
                               isOver: true,
-                              comments: "You are Overweighted");
+                              comments: "You are Overweighted",
+                              sex: "Male");
                         } else {
                           _bmiModel = BMIModel(
+                              height: _heightOfUser.toInt(),
+                              weight: _weightOfUser.toInt(),
+                              age: _age,
                               bmi: _bmi,
                               bmr: _bmr,
                               isNormal: false,
                               isUnder: false,
                               isOver: false,
-                              comments: "You are Obesed");
+                              comments: "You are Obesed",
+                              sex: "Male");
                         }
                       });
-
-                      await ServiceBmi().AddBmi('Male', _bmiModel);
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ResultMale(
-                                    bmiModel: _bmiModel,
-                                    bmrModel: _bmr.toString(),
-                                  )));
+                      _addBmiTodos(_bmiModel);
                     },
                     icon: Icon(
                       Icons.male,

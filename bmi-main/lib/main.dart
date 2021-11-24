@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:exercise_app/pages/home.dart';
+import 'package:first_app/pages/LoginPage.dart';
+import 'package:first_app/pages/SignupPage.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/BMICalculatorScreen.dart';
@@ -18,10 +19,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen(), routes: <String, WidgetBuilder>{
-      '/BMI': (context) => BMICalculatorScreen(),
-      '/BMI_Data': (context) => BMI_Data_Screen(),
-      '/home': (context) => HomeScreen(),
-    });
+    return MaterialApp(
+        home: BMI_Data_Screen(),
+        initialRoute: '/Login',
+        routes: <String, WidgetBuilder>{
+          '/BMI': (context) => BMICalculatorScreen(),
+          '/BMI_Data': (context) => BMI_Data_Screen(),
+          '/Login': (context) => LoginPage(),
+          '/Signup': (context) => SignUpPage(),
+        });
   }
 }
