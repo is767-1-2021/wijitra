@@ -61,8 +61,10 @@ class TodoController {
   }
 
   Future<bool> AuthenApp(String _email, String _pass) async {
+    // ignore: unused_local_variable
     bool result = false;
     try {
+      // ignore: unused_local_variable
       UserCredential userCredential =
           await auth.signInWithEmailAndPassword(email: _email, password: _pass);
       return true;
@@ -79,6 +81,7 @@ class TodoController {
   Future<bool> SignupApp(PatienModel patienModel, String pass) async {
     bool result = false;
     try {
+      // ignore: unused_local_variable
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
               email: patienModel.email.toString(), password: pass);

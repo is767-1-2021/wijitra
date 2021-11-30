@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 
 import 'LoginPage.dart';
 
+// ignore: must_be_immutable
 class ResetPassPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   String? _email;
 
   void _ResetPassApp(BuildContext context) async {
+    // ignore: unused_local_variable
     bool result = await TodoController().ResetPassApp(_email.toString());
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('กรุณาไปตรวจสอบ ที่ Email ขอบคุณ')),

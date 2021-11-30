@@ -7,6 +7,7 @@ import 'package:exercise_app/bmi_bmr/widgets/login_form.dart';
 import 'package:exercise_app/bmi_bmr/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class LoginPage extends StatelessWidget {
   TextEditingController _email = TextEditingController();
   TextEditingController _pass = TextEditingController();
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
                   height: 80,
                 ),
                 const Text(
-                  "Welcome BMI",
+                  "Welcome",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 28,
@@ -46,7 +47,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    const Text("This is a BMI calculation app."),
+                    const Text("This is a OnDiet app."),
                     const SizedBox(
                       width: 5,
                     ),

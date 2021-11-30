@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'LoginPage.dart';
 
+// ignore: must_be_immutable
 class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   bool _isObscure = true;

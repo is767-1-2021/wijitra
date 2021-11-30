@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Dashboard extends StatefulWidget {
   @override
   _DashboardState createState() => _DashboardState();
@@ -53,9 +52,11 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
         actions: <Widget>[
+          // ignore: deprecated_member_use
           FlatButton(
             onPressed: () {},
             child: Stack(
+              // ignore: deprecated_member_use
               overflow: Overflow.visible,
               children: <Widget>[
                 Container(
@@ -437,7 +438,7 @@ class StatCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 25),
           ),
-         /* CircularPercentIndicator(
+          /* CircularPercentIndicator(
             radius: 80.0,
             lineWidth: 8.0,
             percent: achieved / (total < achieved ? achieved : total),

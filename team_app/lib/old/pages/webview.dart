@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// ignore: unused_import
 import 'package:exercise_app/old/pages/sitemap.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,33 +12,33 @@ class WebViewExample extends StatefulWidget {
 }
 
 class _WebViewExampleState extends State<WebViewExample> {
-  
   @override
   void initState() {
     super.initState();
     // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
-          appBar: AppBar(title: Text("News!"), 
-           leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          }
-          ,icon: Icon(Icons.menu),
-        ),
-          actions: [
-            IconButton(
+          appBar: AppBar(
+              title: Text("News!"),
+              leading: IconButton(
                 onPressed: () {
-                   Navigator.pop(context);
+                  Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back)),
-            /*IconButton(onPressed: () {}, icon: Icon(Icons.agriculture)),
+                icon: Icon(Icons.menu),
+              ),
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back)),
+                /*IconButton(onPressed: () {}, icon: Icon(Icons.agriculture)),
               IconButton(
                   onPressed: () {
                     Navigator.push(
@@ -55,7 +56,7 @@ class _WebViewExampleState extends State<WebViewExample> {
                   icon: Icon(Icons.medication)),
               IconButton(onPressed: () {}, icon: Icon(Icons.food_bank)),
             ],*/
-          ]),
+              ]),
           body: WebView(
             initialUrl:
                 'https://www.healthline.com/nutrition/50-super-healthy-foods',

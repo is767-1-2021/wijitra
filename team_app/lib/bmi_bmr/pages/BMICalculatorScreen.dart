@@ -5,9 +5,12 @@ import 'package:exercise_app/bmi_bmr/models/BMIModel.dart';
 
 import 'package:flutter/material.dart';
 
+// ignore: unused_import
 import 'ResultFemale.dart';
+// ignore: unused_import
 import 'Resultmale.dart';
 
+// ignore: unused_element
 FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class BMICalculatorScreen extends StatefulWidget {

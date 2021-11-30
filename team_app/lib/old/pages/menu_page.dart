@@ -1,18 +1,15 @@
 import 'package:exercise_app/old/pages/menu_detail.dart';
+// ignore: unused_import
 import 'package:exercise_app/services/services.dart';
 import 'package:flutter/material.dart';
-
-
 
 class MenuPage extends StatefulWidget {
   @override
   _MenuPageState createState() => _MenuPageState();
 }
 
-
 class _MenuPageState extends State<MenuPage> {
-   
- /* var storage = FirebaseStorage.instance;
+  /* var storage = FirebaseStorage.instance;
   late List<AssetImage> listOfMenu;
   bool clicked = false;
   List<String?> listOfStr = [];
@@ -102,12 +99,11 @@ void getImages() {
         itemCount: entries.length,
         itemBuilder: (context, index) {
           return MenuTile(
-              item: MenuItem(
+            item: MenuItem(
               name: '${entries[index]}',
               cal: '${entries2[index]}',
               colorShade: colorCodes[index % 3],
               menu: menu[index],
-            
             ),
           );
         },
@@ -122,7 +118,6 @@ class MenuItem {
   final String cal;
   final int colorShade;
   final Image menu;
-  
 
   const MenuItem({
     Key? key,
